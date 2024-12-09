@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link rel="stylesheet" href="style1.css" media="screen and (max-width: 1031px)"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&display=swap" rel="stylesheet">
+    <title>Restaurant</title>
+</head>
+<style>
+    /* Responsive section */
+    @media screen and (max-width:930px) {
+        .section {
+            padding: 10px;
+            font-size: 2.5rem;
+        }
+    }
+
+    @media screen and (max-width: 1031px) {
+
+        .burger {
+            font-size: 2rem;
+            /* Adjust font size for smaller screens */
+        }
+
+        .bestburger h6 {
+            font-size: 20px;
+        }
+
+        /* .bestburger img {
+        width: 80%; /* Adjust image size for smaller screens */
+        /* max-width: none; Remove the maximum width restriction */
+        /* }   */
+        */ .bestburger {
+            flex-direction: column;
+            padding: 20px;
+            /* Adjust padding for smaller screens */
+        }
+
+        .burger2 {
+            font-size: 2rem;
+        }
+
+        .bigburger {
+            flex-direction: column-reverse;
+            padding: 20px;
+        }
+
+        .bigburger h6 {
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 868px) {
+        .bestburger {
+            flex-direction: column;
+        }
+
+        .burger {
+            font-size: 1.5rem;
+            /* Adjust font size for smaller screens */
+        }
+
+        /* .bestburger img {
+        width: 100%; /* Image takes full width for smaller screens */
+        /* } */
+        */ .bestburger button {
+            /* width: 100%;  */
+            width: 219px;
+            height: 45px;
+            /* Button takes full width for smaller screens */
+        }
+
+        .bigburger {
+            flex-direction: column-reverse;
+        }
+
+        .burger2 {
+            font-size: 1.5rem;
+        }
+
+        .bigburger button {
+            width: 219px;
+            height: 45px;
+        }
+    }
+
+    /* body{
+        font-family: "Anek Devanagari", sans-serif;
+    } */
+    * {
+
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .fullbg {
+        position: relative;
+        background-image: url(burger.jpg);
+        background-blend-mode: darken;
+        background-size: cover;
+        /* Ensure the background covers the entire element */
+        background-position: center center;
+        /* Center the image */
+        background-repeat: no-repeat;
+        /* Prevent image repetition */
+        width: 100vw;
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+        /* Ensure padding and border are included in width */
+    }
+
+    /* Dark overlay using pseudo-element */
+    .fullbg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        /* Black overlay with 50% opacity */
+        z-index: 1;
+        /* Ensure the overlay is above the background image */
+    }
+
+    /* Adjust the content position */
+    .fullbg>* {
+        position: relative;
+        /* Positioning relative so content is above the overlay */
+        z-index: 2;
+        /* Ensure content is above the overlay */
+    }
+
+    .header,
+    .section,
+    .order {
+        z-index: 2;
+        /* Ensure all content layers are above the overlay */
+        color: white;
+        /* Ensure text color is white */
+    }
+
+    /* Media queries for large screens */
+
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        width: 100%;
+        max-width: 1200px;
+        box-sizing: border-box;
+    }
+
+    .header img {
+        height: auto;
+        max-height: 90px;
+        width: auto;
+        max-width: 140px;
+        margin-right: 20px;
+    }
+
+    .navbar-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .Navbar {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .Navbar li {
+        margin: 0 15px;
+    }
+
+    .Navbar li a {
+        color: antiquewhite;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 1.3rem;
+    }
+
+    .section {
+        max-width: 700px;
+        margin: 40px 15px;
+        padding: 25px;
+        font-size: 2.5rem;
+        color: white;
+        font-weight: bolder;
+    }
+
+    .order {
+        padding-top: 5px;
+        font-size: 1.2rem;
+    }
+
+    .order button {
+        width: 60%;
+        max-width: 190px;
+        height: 30px;
+        /* padding: 15px; */
+        border: none;
+        background-color: rgb(236, 23, 23);
+        font-size: .8rem;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        ;
+    }
+
+    /* Media queries for large screens */
+    @media (min-width: 1440px) {
+        .fullbg {
+            background-position: center center;
+            /* Ensure the background image is centered */
+            background-size: cover;
+            /* Maintain cover size for large screens */
+        }
+    }
+
+    @media (min-width: 2560px) {
+        .fullbg {
+            background-size: cover;
+            /* Ensure the background covers the entire element */
+            background-position: center center;
+            /* Center the image */
+            background-attachment: fixed;
+            /* Optional: Fix background attachment for a parallax effect */
+        }
+    }
+
+
+    /* Media queries for responsiveness */
+    @media (max-width: 767px) {
+        .hamburger {
+            display: block;
+            /* top: 90px; */
+            right: 50px;
+            position: absolute;
+        }
+
+        .Navbar {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .Navbar li {
+            margin: 10px 0;
+        }
+
+        .section {
+            font-size: 2rem;
+        }
+
+        .order button {
+            width: 90%;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .Navbar {
+            display: flex;
+        }
+
+        .section {
+            font-size: 2.5rem;
+        }
+
+        .order button {
+            width: 60%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .Navbar {
+            display: flex;
+        }
+
+        .section {
+            font-size: 3rem;
+        }
+
+        .order button {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .section {
+            font-size: 4rem;
+        }
+
+        .order button {
+            width: 40%;
+        }
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 20px;
+        text-align: center;
+        background-color: white;
+        background-color: rgb(236, 23, 23);
+    }
+
+    .chefs {
+        /* height: 100vh;
+        width: 100vw; */
+        text-align: center;
+        font-size: 3.5rem;
+        background-color: #fff7ed;
+        padding-top: 40px;
+        color: rgb(231, 36, 36);
+    }
+
+    .chefsintro {
+        font-size: 1.3rem;
+
+    }
+
+    .restrochefs {
+
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .thechefs {
+        margin: 50px;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .thechefs img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .bestburger {
+        padding: 50px;
+        background-color: rgb(231, 36, 36);
+        width: 100vw;
+        display: flex;
+        /* flex-wrap: wrap; */
+        align-items: center;
+        justify-content: space-around;
+        box-sizing: border-box;
+    }
+
+    .bestburger img {
+        width: 100%;
+        /* Ensure image scales with its container */
+        max-width: 400px;
+        /* Set a maximum width for larger screens */
+        border-radius: 15px;
+        margin: 20px;
+
+    }
+
+    .burger {
+        padding: 5px;
+        font-size: 2.5rem;
+        /* Set a base font size */
+        font-weight: lighter;
+        color: #fff7ed;
+        text-align: center;
+        /* Center text */
+        max-width: 600px;
+        /* Limit the maximum width */
+        margin: 20px;
+        /* Add some margin for better spacing */
+    }
+
+    .bestburger button {
+        width: 260px;
+        height: 40px;
+        background-color: #fff7ed;
+        font-size: 1.3rem;
+        color: rgb(236, 23, 23);
+        font-weight: bold;
+        border-radius: 30px;
+        margin-top: 40px;
+        border: 0px solid #fff7ed;
+    }
+
+    .bigburger {
+        padding: 50px;
+        background-color: #fff7ed;
+        width: 100vw;
+        display: flex;
+        /* flex-wrap: wrap; */
+        align-items: center;
+        justify-content: space-around;
+        box-sizing: border-box;
+    }
+
+    .burger2 {
+        padding: 5px;
+        font-size: 2.5rem;
+        /* Set a base font size */
+        font-weight: lighter;
+        color: rgb(236, 23, 23);
+        text-align: center;
+        /* Center text */
+        max-width: 600px;
+        /* Limit the maximum width */
+        margin: 20px;
+        /* Add some margin for better spacing */
+
+
+    }
+
+    .bigburger img {
+        width: 100%;
+        /* Ensure image scales with its container */
+        max-width: 400px;
+        /* Set a maximum width for larger screens */
+        border-radius: 15px;
+        margin: 20px;
+        /* Add some margin for better spacing */
+
+
+    }
+
+    .bigburger button {
+        /* width: 100%;
+        max-width: 260px;
+        height: 55px;
+        background-color: rgb(236, 23, 23);
+        font-size: 1.3rem;
+        color: #fff7ed;
+        font-weight: bold;
+        border-radius: 50px;
+        margin-top: 40px;
+        border: 0px solid rgb(236, 23, 23);
+        cursor: pointer; */
+        width: 260px;
+        height: 40px;
+        background-color: rgb(236, 23, 23);
+        font-size: 1.3rem;
+        color: #fff7ed;
+        font-weight: bold;
+        border-radius: 30px;
+        margin-top: 40px;
+        border: 0px solid #fff7ed;
+    }
+
+    .statistics {
+        text-align: center;
+        font-size: 2rem;
+        background-color: rgb(236, 23, 23);
+        padding-top: 40px;
+        padding-bottom: 40px;
+        color: #fff7ed;
+    }
+
+    .statistics-lorem {
+        text-align: center;
+        display: inline-block;
+        color: #fff7ed;
+        font-size: 1.2rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .boxes {
+        display: flex;
+        padding: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .box {
+        border: 5px solid #fff7ed;
+        padding: 30px;
+        border-radius: 50%;
+        text-align: center;
+        flex: 1 1 200px;
+        max-width: 200px;
+    }
+
+    .box h2 {
+        font-size: 4rem;
+        margin: 0;
+    }
+
+    .box span {
+        font-size: 1rem;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+        .statistics {
+            font-size: 1.5rem;
+        }
+
+        .statistics-lorem {
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        .box h2 {
+            font-size: 4rem;
+        }
+
+        .box span {
+            font-size: 0.8rem;
+        }
+
+        .anything {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .statistics {
+            font-size: 1.2rem;
+        }
+
+        .statistics-lorem {
+            font-size: 1.2rem;
+        }
+
+        .box {
+            padding: 20px;
+        }
+
+        .box h2 {
+            font-size: 4rem;
+        }
+
+        .box span {
+            font-size: 0.8rem;
+        }
+    }
+
+
+    .popularpacks {
+        /* height: 100vh;
+        width: 100vw; */
+        color: rgb(236, 23, 23);
+        background-color: #fbf0e1;
+        font-size: 3.4rem;
+        text-align: center;
+        padding-top: 25px;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 50px;
+        flex-wrap: wrap;
+    }
+
+    .packages {
+        box-shadow: 0px 0px 15px -8px rgba(0, 0, 0, 1);
+        font-size: 1.1rem;
+        /* Adjust font size for smaller screens */
+        background-color: white;
+        border-radius: 15px;
+        /* font-weight: bold; */
+        color: rgb(236, 23, 23);
+        padding: 20px;
+        flex: 1 1 300px;
+        /* Flexible width with min-width of 300px */
+        max-width: 350px;
+        /* Maximum width for each package */
+        margin-bottom: 30px;
+        /* Adjust margin bottom */
+        text-align: center;
+        /* Center text */
+
+    }
+
+    .packages img {
+        height: 100px;
+        width: 140px;
+        margin: 10px;
+    }
+
+    .packages button {
+        width: 100%;
+        height: 40px;
+        background-color: rgb(236, 23, 23);
+        font-size: 1rem;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+        margin-top: 30px;
+    }
+
+    .packages span {
+        font-weight: bolder;
+    }
+
+    .anything {
+        height: 70vh;
+        width: 100vw;
+        background-color: rgb(236, 23, 23);
+        display: flex;
+        text-align: center;
+        font-size: 1.5rem;
+        align-items: center;
+        padding: 25px;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff7ed;
+    }
+
+    .something1 {
+        /* height: 25%; */
+        width: 70%;
+        text-align: center;
+        margin: 25px;
+    }
+
+    .something2 {
+        height: 10%;
+        width: 70%;
+        font-weight: bold;
+    }
+
+    .dmou {
+        height: 70vh;
+        width: 100vw;
+        background-color: #fbf0e1;
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .span {
+        margin: 10px;
+        font-size: 2.8rem;
+        font-weight: bolder;
+        /* padding: 40px; */
+    }
+
+    .dmoulorem {
+        width: 70%;
+    }
+
+    .footer {
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow wrapping of columns */
+        color: white;
+        font-size: 1.5rem;
+        padding: 40px;
+        text-align: left;
+        box-sizing: border-box;
+        /* Include padding and border in width */
+    }
+
+    .footer p {
+        color: white;
+        margin: 5px;
+    }
+
+    .footer>div {
+        width: 100%;
+        /* Default to full width for smaller screens */
+        margin: 10px 0;
+        /* Use vertical margin */
+        padding: 10px;
+        /* Add padding for spacing */
+        box-sizing: border-box;
+    }
+
+
+    .title {
+        height: 100%;
+        width: 25%;
+        margin: 50px;
+    }
+
+    .about {
+        height: 100%;
+        width: 25%;
+        margin: 50px;
+    }
+
+    .services {
+        width: 25%;
+        height: 100%;
+        margin: 50px;
+    }
+
+    .other {
+        width: 25%;
+        margin: 50px;
+        height: 100%;
+    }
+
+    /* video {
+        width: 80%;
+        max-width: 800px;
+    } */
+
+
+    .dmou form input,
+    .dmou form textarea {
+        width: 90%;
+        /* Set a default width that works for most screens */
+        max-width: 500px;
+        /* Limit the width for larger screens */
+        margin: 5px 0;
+        /* Use vertical margin for better spacing */
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /* Ensure padding doesn't affect the width */
+    }
+
+    .formbtn {
+        margin: 10px;
+        /* Use consistent margin */
+        padding: 10px 20px;
+        /* Add padding for better click area */
+        width: 90%;
+        /* Default width for small screens */
+        max-width: 200px;
+        /* Max width to prevent being too wide on larger screens */
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(236, 23, 23);
+        color: #fff7ed;
+        font-size: 16px;
+        cursor: pointer;
+        box-sizing: border-box;
+        /* Ensure padding doesn't affect width */
+    }
+
+    .formbtn:hover {
+        background-color: #fff7ed;
+        color: rgb(236, 23, 23);
+
+
+    }
+
+    .formmargin {
+        margin: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .formbtn {
+            width: 45%;
+            /* Adjust width for tablets */
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .formbtn {
+            width: 30%;
+            /* Adjust width for desktops */
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .formbtn {
+            width: 20%;
+            /* Adjust width for larger screens */
+        }
+    }
+
+    /* Media queries for different screen sizes for footer*/
+    @media (min-width: 768px) {
+        .footer>div {
+            width: 45%;
+            /* Two columns for tablets */
+            margin: 20px 2.5%;
+            /* Horizontal margin for spacing */
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .footer>div {
+            width: 22%;
+            /* Four columns for desktops */
+            margin: 20px 1.5%;
+            /* Horizontal margin for spacing */
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .footer>div {
+            width: 22%;
+            /* Maintain width for larger screens */
+            margin: 20px 1.5%;
+            /* Maintain spacing */
+        }
+    }
+
+
+
+    /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    /* Hovers section */
+
+
+    .bigburger button:hover {
+        background-color: rgb(220, 20, 20);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+
+
+
+
+    /* smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+        /* Enables smooth scrolling */
+    }
+
+
+
+    .about-header {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: rgb(236, 23, 23);
+        color: white;
+    }
+
+    .about-header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+
+    .about-header p {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    .about-intro {
+        padding: 20px;
+        /* background-color: #fff7ed; */
+        text-align: center;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .highlights {
+        padding: 40px 20px;
+        /* background-color: #fff7ed; */
+        text-align: center;
+        background-color: #fff7ed;
+    }
+
+    .highlights>p {
+        padding-top: 60px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .highlights h2 {
+        font-size: 1.8em;
+        color: rgb(236, 23, 23);
+        margin-bottom: 20px;
+    }
+
+    .highlight-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .highlight {
+        width: 250px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight h3 {
+        color: rgb(236, 23, 23);
+        margin-bottom: 10px;
+    }
+</style>
+
+
+
+
+
+<body>
+    <div class="fullbg" id="home-section">
+        <div class="header">
+            <img src="restlogo.png" alt="">
+            <div class="navbar-container">
+                <div class="hamburger" id="hamburger">
+                    &#9776;
+                </div>
+                <ul class="Navbar" id="Navbar">
+                    <li><a href="#home-section">Home</a></li>
+                    <li><a href="#about-section">About</a></li>
+                    <li><a href="#bestburger-section">Product</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            Get Cashback <br> up to 50%
+            <div class="order">
+                Relish our tasty burgers now and get 50% cashback for your next visit—eat today, save for tomorrow! <br>
+                <button id="playButton">Order now</button>
+                <script>
+
+                    document.getElementById('hamburger').addEventListener('click', function () {
+                        var navbar = document.getElementById('Navbar');
+                        if (navbar.style.display === 'block') {
+                            navbar.style.display = 'none';
+                        } else {
+                            navbar.style.display = 'block';
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <header class="about-header" id="about-section">
+        <h1>Welcome to Tasty Bites</h1>
+        <p>Experience the flavor of passion and quality in every bite.</p>
+    </header>
+
+    <!-- About Section -->
+    <!-- <section class="about-intro">
+        <p>At Tasty Bites, we believe in bringing people together through food. Our dishes are crafted with the freshest
+            ingredients and a dash of creativity to offer you a unique dining experience.</p>
+    </section> -->
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <h2>Why You'll Love Us</h2>
+        <div class="highlight-items">
+            <div class="highlight">
+                <h3>Fresh Ingredients</h3>
+                <p>Sourced locally, ensuring freshness and quality.</p>
+            </div>
+            <div class="highlight">
+                <h3>Cozy Atmosphere</h3>
+                <p>A warm, inviting space perfect for every occasion.</p>
+            </div>
+            <div class="highlight">
+                <h3>Passionate Chefs</h3>
+                <p>Our chefs are masters in blending tradition with innovation.</p>
+            </div>
+        </div>
+        <p>At Tasty Bites, we believe in bringing people together through food. Our dishes are crafted with the freshest
+            ingredients and a dash of creativity to offer you a unique dining experience.</p>
+    </section>
+
+
+
+    <div class="chefs">
+        Our Chef
+        <div class="chefsintro">
+            <br>Meet the talent behind the taste:<br>our expert chefs, who blend innovation with tradition to deliver
+            exceptional dishes every time
+        </div>
+
+        <div class="restrochefs">
+            <div class="thechefs">
+                <img src="chef1-photoaidcom-cropped (1).jpg" alt=""><br>
+                AIDEN HUNTER <h5 style="font-weight: lighter;">Founder</h5>
+            </div>
+
+            <div class="thechefs">
+                <img src="chef2-photoaidcom-cropped.jpg" alt=""><br>
+                ETHEL RAMSEY <h5 style="font-weight: lighter;">Co-Founder</h5>
+            </div>
+            <div class="thechefs">
+                <img src="chef3-photoaidcom-cropped.jpg" alt=""><br>
+                FANNIE STEWART <h5 style="font-weight: lighter;">Co-Founder</h5>
+            </div>
+        </div>
+    </div>
+    <div class="bestburger" id="bestburger-section">
+        <img src="burger3.avif" alt="">
+        <div class="burger">
+            Best Burger <br>
+
+            <h6 style="font-size: 1.4rem; margin-top:30px
+           ;">A flavor explosion with every bite, this burger features a perfectly seasoned patty topped with melted
+                cheese, crispy bacon, and fresh, tangy pickles
+            </h6>
+            <button>Order now</button>
+        </div>
+
+
+    </div>
+    <div class="bigburger">
+        <div class="burger2">
+            Big Burger <br>
+            <h6 style="font-size: 1.4rem; margin-top:30px
+          ;">Get ready to tackle our Big Kahuna Burger—a towering masterpiece with a hefty patty, layers of savory
+                toppings, and a bun that’s built to hold it all together</h6>
+            <button>Order now</button>
+        </div>
+        <img src="burger4.avif" alt="">
+
+
+
+    </div>
+    <div class="statistics">
+        statistics <br>
+        <div class="statistics-lorem">
+            company was founded in 1953 as Tasty Bites, a Jacksonville, Florida-based restaurant chain
+        </div>
+        <div class="boxes">
+            <div class="box">
+                <h2>7k</h2>
+                <span>CUSTOMER</span>
+            </div>
+            <div class="box">
+                <h2>109</h2>
+                <span>OUTLETS</span>
+            </div>
+            <div class="box">
+                <h2>35</h2>
+                <span>COUNTRY</span>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="popularpacks">
+        Popular Packages
+        <div class="cards">
+            <div class="packages">
+                The Classic Combo: <br>
+                <img src="package2-removebg-preview.png" alt=""><br>
+                <span>$10.00</span> <br>
+                Enjoy a perfectly grilled burger, crispy fries, and a refreshing soft drink—our
+                timeless trio that's always a hit <br>
+                <button>Order now</button>
+
+            </div>
+            <div class="packages">The Spicy Delight Pack: <br>
+                <img src="package..2-removebg-preview.png" alt=""><br>
+                <span>$20.00</span> <br>
+                Enjoy a fiery burger, spicy loaded fries, and a cool lemonade—perfect for
+                those who love a bit of heat
+                <br>
+                <button>Order now</button>
+
+
+            </div>
+            <div class="packages">
+                The All-Star Pack: <br>
+                <img src="package3-removebg-preview.png" alt=""><br>
+                <span> $30.00 </span><br>
+                A burger, a generous serving of our famous fries, and a dessert to finish—because
+                every meal should end on a sweet note
+                <br>
+                <button>Order now</button>
+
+
+            </div>
+
+        </div>
+        <div class="anything">
+            <div class="something1">
+                "Tasty Bites: Where Every Burger is Crafted to Perfection and Every Bite Delivers Unforgettable Flavor."
+            </div>
+            <div class="something2">Aiden Hunter </div>
+        </div>
+        <div class="dmou" id="contact-section">
+            <div class="span">Contact Us</div>
+            <div class="dmoulorem"> "Don’t miss out—subscribe for the latest updates and exclusive offers from us!"
+                <form action="https://formspree.io/f/xyzyjadq" method="post" class="formmargin">
+                    <input type="text" name="username" placeholder="Enter your good name"><br>
+                    <input type="number" name="number" id="mobno" placeholder="Enter mobile number"><br>
+                    <textarea id="feedback" placeholder="Give feedback" name="text">
+
+                        </textarea><br>
+                    <button class="formbtn">
+                        Submit
+                    </button><button class="formbtn">
+                        Reset
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="title">
+                <h3>&#8226; Tasty Bites</h3> <br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, sunt illum nulla adipisci eum quam.
+                </p>
+            </div>
+            <div class="about">
+                <h3>&#8226; About</h3> <br>
+                <p>History</p>
+                <p>Our Teams</p>
+                <p>Brand Guidelines</p>
+                <p>Terms & Condition</p>
+                <p>Privacy Policy</p>
+            </div>
+            <div class="services">
+                <h3>&#8226; Services</h3> <br>
+                <p>How to Order</p>
+                <p>Our Products</p>
+                <p>Order Status</p>
+                <p>Promo</p>
+                <p>Payment Method</p>
+            </div>
+            <div class="other">
+                <h3>&#8226; Other</h3> <br>
+                <p>Contact Us</p>
+                <p>Help</p>
+                <p>Privacy</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
